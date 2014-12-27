@@ -1,0 +1,18 @@
+{
+  "name": "node-blog",
+  "version": "1.0.0",
+  "description": "My personal blog",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@bitbucket.org:mtscout6/node-blog.git"
+  },
+  "keywords": [
+    "blog"
+  ],
+  "author": "Matt Smith <mtscout6@gmail.com>",
+  "license": "Attribution-ShareAlike 4.0 International"
+}
