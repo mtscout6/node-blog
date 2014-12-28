@@ -14,5 +14,12 @@
     "blog"
   ],
   "author": "Matt Smith <mtscout6@gmail.com>",
-  "license": "Attribution-ShareAlike 4.0 International"
+  "license": "Attribution-ShareAlike 4.0 International",
+  "engine": "node >= 0.11.13",
+  "dependencies": {
+    "koa": "^0.14.0",
+    "node-jsx": "^0.12.4",
+    "react": "^0.12.2",
+    "react-router": "^0.11.6"
+  }
 }
