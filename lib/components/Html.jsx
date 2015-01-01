@@ -14,6 +14,7 @@ var Html = React.createClass({
         </head>
         <body>
           <div id="app" dangerouslySetInnerHTML={{__html: this.props.markup}}></div>
+          <script src="/js/main.js"></script>
         </body>
       </html>
     );
