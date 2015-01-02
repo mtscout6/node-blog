@@ -13,6 +13,7 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.jsx$/, loader: 'jsx-loader?harmony&insertPragma=React.DOM' },
+      { test: /\.less/, loader: 'style!css!less' },
       { test: require.resolve('react'), loader: 'expose?React' }
     ]
   },

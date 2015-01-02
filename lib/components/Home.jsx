@@ -17,7 +17,6 @@ var Home = React.createClass({
       <div>
         <span>Count: {this.state.count}</span>
         <button onClick={this.onClicked}>Bump</button>
-        <div>Go to <Link to='other'>Other</Link></div>
       </div>
     );
   }

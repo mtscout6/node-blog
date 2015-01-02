@@ -10,11 +10,11 @@ var Html = React.createClass({
       <html lang="en">
         <head>
           <meta name="viewport" content="width=device-width, user-scalable=no" />
+          <script src="/js/main.js"></script>
           <title>Blog</title>
         </head>
         <body>
           <div id="app" dangerouslySetInnerHTML={{__html: this.props.markup}}></div>
-          <script src="/js/main.js"></script>
         </body>
       </html>
     );
