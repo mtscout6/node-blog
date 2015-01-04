@@ -1,5 +1,6 @@
 var path = require('path');
 
+
 module.exports = {
   entry: "./lib/client",
 
@@ -12,13 +13,14 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.jsx$/, loader: 'jsx-loader?harmony&insertPragma=React.DOM' },
+      { test: /\.md/, loader: 'jsx?harmony&insertPragma=React.DOM!' + path.resolve('./lib/markdown/loader.js') },
+      { test: /\.jsx$/, loader: 'jsx?harmony&insertPragma=React.DOM' },
       { test: /\.less/, loader: 'style!css!less' },
       { test: require.resolve('react'), loader: 'expose?React' }
     ]
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx']
+    extensions: ['', '.js', '.jsx', '.md']
   }
 };

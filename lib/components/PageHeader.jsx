@@ -13,7 +13,7 @@ var PageHeader = React.createClass({
           <Grid>
             <Row>
               <Col xs={12} md={8}>
-                <h1>Storystrap</h1>
+                <h1>Matt Smith's Blog</h1>
               </Col>
             </Row>
             <Row>

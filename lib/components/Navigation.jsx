@@ -14,6 +14,7 @@ var Navigation = React.createClass({
         <Nav>
           <NavItemLink to='posts'>Posts</NavItemLink>
           <NavItemLink to='other'>Other</NavItemLink>
+          <NavItemLink to='blog-post'>Blog Post</NavItemLink>
         </Nav>
       </Navbar>
     );
