@@ -13,7 +13,14 @@ module.exports = {
 
   module: {
     loaders: [
-      { test: /\.md/, loader: 'jsx?harmony&insertPragma=React.DOM!' + path.resolve('./lib/markdown/loader.js') },
+      {
+        test: /\.md/,
+        loaders: [
+          path.resolve('./lib/markdown/proxy-loader.js'),
+          'jsx?harmony&insertPragma=React.DOM',
+          path.resolve('./lib/markdown/loader.js')
+        ]
+      },
       { test: /\.jsx$/, loader: 'jsx?harmony&insertPragma=React.DOM' },
       { test: /\.less/, loader: 'style!css!less' },
       { test: require.resolve('react'), loader: 'expose?React' }
