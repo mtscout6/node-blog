@@ -1,4 +1,5 @@
 require('./styles/index.less');
+require('highlight.js/styles/github.css');
 var React = require('react');
 var Router = require('react-router');
 var getRoutes = require('./routes');

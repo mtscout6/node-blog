@@ -1,21 +1,28 @@
 ---
 layout: post
-title: "Test title"
-date: 2012-01-14 11:42
+title: "FubuMVC.ServerSentEvents OOTB Support"
+date: 2012-10-26 14:36
 comments: true
-categories:
-- HTML
-- Javascript
-- KnockoutJs
+categories: [FubuMVC, Server Sent Events (SSE), C#]
 ---
-# It's alive!! The Markdown works.
 
-Hello *World*!
+FubuMVC now has support for [Server Sent Events](http://en.wikipedia.org/wiki/Server-sent_events) (SSE)!  I have recently used it for our internal call center dashboard here at [Extend Health](https://www.extendhealth.com). Since it's inception we are now seeing data on the dashboard within seconds of it happening, as opposed to the previous 5 second ajax refresh interval we were doing before.
 
-Test list
+Out of the box (OOTB) the FubuMVC.ServerSentEvents bottle already does just about everything you need on the server. The only thing you need to implement is a topic for which your events will be coordinated against. A topic is created by inheriting the `FubuMVC.ServerSentEvents.Topic` class. The topic will be used to coordinate how events are stored and pushed to the connected clients.  This is accomplished by overriding the `bool Eqauls(object item)` and `int GetHashCode()` methods. See an example below:
 
-- item 1
-- item 2
-- item 3
-- item 4
-- item 5
+`{ it works class }`
+
+``` csharp
+using System;
+using FubuMVC.ServerSentEvents;
+
+namespace SomeNamespace
+{
+}
+```
+
+``` html
+<div class="test-class">
+  <div class="inner-test-class"></div>
+</div>
+```
