@@ -2,6 +2,7 @@
   "name": "node-blog",
   "version": "1.0.0",
   "description": "My personal blog",
+  "private": true,
   "main": "index.js",
   "scripts": {
     "test": "mocha --harmony ./tests",
@@ -18,7 +19,7 @@
   ],
   "author": "Matt Smith <mtscout6@gmail.com>",
   "license": "Attribution-ShareAlike 4.0 International",
-  "engine": "node >= 0.11.13",
+  "engine": "node >= 0.11.15",
   "dependencies": {
     "enhanced-require": "^0.5.0-beta6",
     "highlight.js": "^8.4.0",
