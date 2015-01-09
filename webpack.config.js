@@ -37,6 +37,7 @@ module.exports = {
   },
 
   plugins: [
+    new webpack.optimize.UglifyJsPlugin(),
     new webpack.IgnorePlugin(/chunks\.json/),
     new webpack.optimize.CommonsChunkPlugin('commons.js'),
     function() {
