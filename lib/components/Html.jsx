@@ -6,11 +6,17 @@ var writeState = function(state) {
 
 var Html = React.createClass({
   render: function() {
+    var additionalScripts = this.props.scripts.map(function(s, index) {
+      return <script src={s} key={index}></script>;
+    });
+
     return (
       <html lang="en">
         <head>
           <meta name="viewport" content="width=device-width, user-scalable=no" />
-          <script src="/js/main.js"></script>
+          <script src="/assets/commons.js"></script>
+          {additionalScripts}
+          <script src="/assets/main.js"></script>
           <title>Blog</title>
         </head>
         <body>

@@ -6,7 +6,10 @@ module.exports = () => {
     <Route name="posts" path="/" handler={require('./components/Shell')}>
       <DefaultRoute handler={require('./components/Home')} />
       <Route name='other' handler={require('./components/Other')} />
-      <Route name='blog-post' handler={require('../posts/test')} />
+      <Route path='blog' handler={require('./components/NoOpHandler')}>
+        <Route name='blog-post' handler={require('../posts/test')} />
+        <Route name='blog-post2' handler={require('../posts/test2')} />
+      </Route>
       <NotFoundRoute name="not-found" handler={require('./components/NotFound')}/>
     </Route>
   ];

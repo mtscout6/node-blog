@@ -1,28 +1,82 @@
 ---
 layout: post
-title: "FubuMVC.ServerSentEvents OOTB Support"
-date: 2012-10-26 14:36
+title: "Using Multiple Versions of KnockoutJs Simultaneously"
+date: 2012-01-14 11:42
 comments: true
-categories: [FubuMVC, Server Sent Events (SSE), C#]
+categories: [HTML, Javascript, KnockoutJs]
 ---
 
-FubuMVC now has support for [Server Sent Events](http://en.wikipedia.org/wiki/Server-sent_events) (SSE)!  I have recently used it for our internal call center dashboard here at [Extend Health](https://www.extendhealth.com). Since it's inception we are now seeing data on the dashboard within seconds of it happening, as opposed to the previous 5 second ajax refresh interval we were doing before.
-
-Out of the box (OOTB) the FubuMVC.ServerSentEvents bottle already does just about everything you need on the server. The only thing you need to implement is a topic for which your events will be coordinated against. A topic is created by inheriting the `FubuMVC.ServerSentEvents.Topic` class. The topic will be used to coordinate how events are stored and pushed to the connected clients.  This is accomplished by overriding the `bool Eqauls(object item)` and `int GetHashCode()` methods. See an example below:
-
-`{ it works class }`
-
-``` csharp
-using System;
-using FubuMVC.ServerSentEvents;
-
-namespace SomeNamespace
-{
-}
-```
+When new versions of Knockout are released that implement breaking changes, you may not have to time or resources to go back and update all of you legacy code base just to get the latest version. Using RequireJs you can adopt the latest changes without breaking old code. So let's look at an example of an old app using Knockout 1.2.1:
 
 ``` html
-<div class="test-class">
-  <div class="inner-test-class"></div>
-</div>
+<html>
+  <head>
+    <script type="text/javascript" src="scripts/jquery-1.6.min.js"></script>
+    <script type="text/javascript" src="scripts/knockout-1.2.1.js"></script>
+    <script type="text/javascript" src="scripts/v1.2.1.js"></script>
+  </head>
+  <body>
+    <div>
+      Loaded with <span data-bind="text: loadedVersion"></span>
+    </div>
+  </body>
+</html>
 ```
+
+``` javascript
+$(document).ready(function(){
+  var appViewModel = function() {
+    this.loadedVersion = ko.observable(!ko.computed ? 'Knockout v2.1.0' : 'Knockout v1.2.1');
+  }
+
+  ko.applyBindings(new appViewModel());
+});
+```
+
+You you will notice that since `ko.computed` was introduced in v2.0.0 the loaded version that is displayed on the screen is "Knockout v1.2.1"
+
+Now with the release of 2.1.0 which supports AMD loading, `ko` is not defined in global scope when knockout is loaded with an AMD loader such as RequireJs, CurlJs, etc. (We will use RequireJs for this demonstration, the AMD loader you wish to use is up to you. Each has it's own pros and cons which goes beyond the scope of this document.). This means that we will be able to use both versions of Knockout simultaneously, with minor tweeks to the legacy code which will be explained momentarily. First let's add our new features.
+
+``` html
+<html>
+  <head>
+    <script type="text/javascript" src="scripts/jquery-1.6.min.js"></script>
+    <script type="text/javascript" src="scripts/knockout-1.2.1.js"></script>
+    <script type="text/javascript" src="scripts/v1.2.1.js"></script>
+    <script type="text/javascript" data-main="scripts/init.js" src="scripts/require.js"></script>
+  </head>
+  <body>
+    <div id="v210">
+      Loaded with <span data-bind="text: loadedVersion"></span>
+    </div>
+    <div id="v121">
+      Loaded with <span data-bind="text: loadedVersion"></span>
+    </div>
+  </body>
+</html>
+```
+
+``` javascript
+...
+  ko.applyBindings(new appViewModel(), $('#v121')[0]);
+...
+```
+
+Notice the specific DOM element that applyBindings is being applied to! This is done so that the binding is not applied to the entire document, this is the gotcha. You cannot apply bindings to the same DOM tree with different versions of Knockout. Now onto the new stuff loaded through an AMD Loader.
+
+``` javascript
+require(['v2.1.0'], function() {});
+```
+
+``` javascript
+define(['knockout-2.1.0'], function(ko){
+  var appViewModel = function() {
+    this.loadedVersion = ko.observable(ko.computed ? 'Knockout v2.1.0' : 'Knockout v1.2.1');
+  }
+
+  ko.applyBindings(new appViewModel(), $('#v210')[0]);
+});
+```
+
+You can now go through as time permits and update your legacy features to utilize the newer Knockout libraries! Unfortunately you will not be able to use two versions together if they are both prior to v2.1.0, at least one must be this later version since all previous versions did not support AMD loading and `ko` was defined on the global variable.
+

@@ -1,3 +1,11 @@
+//polyfills so require.ensure and require.include work in node.js (since they are meant for the browser)
+if(typeof require.ensure !== "function") {
+  require.ensure = function(d, c) { c(require) };
+}
+if(typeof require.include !== "function") {
+  require.include = function() {};
+}
+
 var React = require("react");
 var component;
 
@@ -10,10 +18,11 @@ var desc = {
       });
     } else if(callback) callback(component);
     return component;
-  },
+  }
 };
 
 var mixinReactProxy = require(##REACT-PROXY-PATH##);
-mixinReactProxy(React, desc);
+mixinReactProxy(React, desc, ##NORMALIZED-MODULE-REQUEST##);
 module.exports = React.createClass(desc);
 module.exports.Mixin = desc;
+module.exports.MetaData = ##METADATA##;
