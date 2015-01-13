@@ -53,7 +53,7 @@
     "react-bootstrap": "https://github.com/react-bootstrap/react-bootstrap-npm/archive/v0.13.0.tar.gz",
     "react-proxy-loader": "^0.3.2",
     "react-router": "https://github.com/mtscout6/react-router/archive/v0.11.7-beta.tar.gz",
-    "react-router-bootstrap": "^0.7.2",
+    "react-router-bootstrap": "^0.8.0",
     "react-tools": "^0.12.2",
     "style-loader": "^0.8.2",
     "supervisor": "^0.6.0",
