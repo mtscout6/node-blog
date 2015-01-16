@@ -22,7 +22,12 @@ var PageFooter = React.createClass({
         <div className='bottom-anchor'>
           <Grid>
             <Row>
-              <Col md={12}>Footer</Col>
+              <Col md={6}>Footer</Col>
+              <Col md={6}>
+                <span className='pull-right'>
+                  <i className='fa fa-copyright'></i> 2012-{new Date().getFullYear()}
+                </span>
+              </Col>
             </Row>
           </Grid>
         </div>
