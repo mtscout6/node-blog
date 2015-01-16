@@ -2,12 +2,45 @@
   background-color: lighten(@body-bg, 10%);
 
   .content-panel {
-    background-color: #fff;
-
-    padding: 5px;
+    background-color: #FFF;
     padding-bottom: 20px;
-    margin-top: -20px;
 
-    margin-bottom: 20px;
+    .inner-content-panel {
+      :first-child {
+        margin-top: 0px;
+      }
+
+      :last-child {
+        margin-bottom: 0px;
+      }
+    }
+  }
+}
+
+.transition-page-content {
+  @duration: .3s;
+  @initialOpacity: 0.01;
+  @finalOpacity: 1;
+
+  &-enter {
+    opacity: @initialOpacity;
+    max-height: 0px;
+    transition: max-height 0s linear @duration, opacity @duration ease-in @duration;
+
+    &.transition-page-content-enter-active {
+      opacity: @initialOpacity;
+      max-height: 99999px;
+    }
+  }
+
+  &-leave {
+    opacity: @finalOpacity;
+    max-height: 99999px;
+    transition: max-height 0s linear @duration, opacity @duration ease-out;
+
+    &.transition-page-content-leave-active {
+      opacity: @initialOpacity;
+      max-height: 0px;
+    }
   }
 }

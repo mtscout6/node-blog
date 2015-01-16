@@ -26,7 +26,7 @@ module.exports = {
         ]
       },
       { test: /\.jsx$/, loader: 'jsx?harmony&insertPragma=React.DOM' },
-      { test: /\.less/, loader: 'style!css!less' },
+      { test: /\.less/, loader: 'style!css!autoprefixer!less' },
       { test: /\.css/, loader: 'style!css' },
       { test: require.resolve('react'), loader: 'expose?React' }
     ]

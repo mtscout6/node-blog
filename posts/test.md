@@ -5,6 +5,7 @@ date: 2012-01-14 11:42
 comments: true
 categories: [HTML, Javascript, KnockoutJs]
 ---
+# Test
 
 When new versions of Knockout are released that implement breaking changes, you may not have to time or resources to go back and update all of you legacy code base just to get the latest version. Using RequireJs you can adopt the latest changes without breaking old code. So let's look at an example of an old app using Knockout 1.2.1:
 

@@ -12,14 +12,12 @@ var PageHeader = React.createClass({
         <div className='masthead'>
           <Grid>
             <Row>
-              <Col xs={12} md={8}>
+              <Col md={12}>
                 <h1>Matt Smith's Blog</h1>
               </Col>
             </Row>
             <Row>
-              <Col md={12}>
-                <div className='top-spacer'> </div>
-              </Col>
+              <Col className='top-spacer' md={12}></Col>
             </Row>
           </Grid>
         </div>
