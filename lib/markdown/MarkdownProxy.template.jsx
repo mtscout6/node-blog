@@ -25,4 +25,4 @@ var mixinReactProxy = require(##REACT-PROXY-PATH##);
 mixinReactProxy(React, desc, ##NORMALIZED-MODULE-REQUEST##);
 module.exports = React.createClass(desc);
 module.exports.Mixin = desc;
-module.exports.MetaData = ##METADATA##;
+module.exports.metadata = ##METADATA##;

@@ -25,7 +25,13 @@ module.exports = {
           path.resolve('./lib/markdown/loader.js')
         ]
       },
-      { test: /\.jsx$/, loader: 'jsx?harmony&insertPragma=React.DOM' },
+      {
+        test: /\.jsx?$/,
+        loaders: [
+          'jsx?harmony&insertPragma=React.DOM',
+          path.resolve('./webpack/client-loader.js')
+        ]
+      },
       { test: /\.less/, loader: 'style!css!autoprefixer!less' },
       { test: /\.css/, loader: 'style!css' },
       { test: require.resolve('react'), loader: 'expose?React' }
@@ -54,6 +60,7 @@ module.exports = {
           })
           .filter(function(m) {
             return m.name.indexOf('posts') >= 0 &&
+              m.asset &&
               m.asset.indexOf('chunk') >= 0;
           })
           .map(function(m) {
