@@ -50,6 +50,7 @@
     "marked": "^0.3.2",
     "mocha": "^2.1.0",
     "moment": "^2.9.0",
+    "newrelic": "^1.14.7",
     "node-jsx": "^0.12.4",
     "react": "^0.12.2",
     "react-bootstrap": "https://github.com/react-bootstrap/react-bootstrap-npm/archive/v0.13.0.tar.gz",
