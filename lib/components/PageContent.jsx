@@ -1,5 +1,5 @@
-var React = require('react/addons');
-var { CSSTransitionGroup } = React.addons;
+var React = require('react');
+var CSSTransitionGroup = require('react/lib/ReactCSSTransitionGroup');
 var { State } = require('react-router');
 var Grid = require('react-bootstrap/Grid');
 var Row = require('react-bootstrap/Row');
