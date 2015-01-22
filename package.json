@@ -21,7 +21,7 @@
   "author": "Matt Smith <mtscout6@gmail.com>",
   "license": "Attribution-ShareAlike 4.0 International",
   "engines": {
-    "node": "0.11.x",
+    "node": "0.11.13",
     "npm": "2.1.x"
   },
   "dependencies": {
