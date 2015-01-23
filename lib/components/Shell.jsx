@@ -10,7 +10,7 @@ var Shell = React.createClass({
       <div>
         <PageHeader />
         <PageContent>
-          <RouteHandler {...this.props} />
+          <RouteHandler />
         </PageContent>
         <PageFooter />
       </div>

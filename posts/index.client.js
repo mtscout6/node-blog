@@ -1,10 +1,9 @@
 var postsContext = require.context('.', true, /\.md*/);
 postsContext.keys().forEach(postsContext);
 
-var posts = require('./posts');
+var Posts = require('./posts');
 
-postsContext.keys().forEach(function(p) {
-  posts.add(postsContext(p));
-});
+module.exports = new Posts(postsContext.keys().map(function(p){
+  return postsContext(p);
+}));
 
-module.exports = posts;
