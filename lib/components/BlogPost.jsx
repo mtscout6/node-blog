@@ -1,6 +1,7 @@
 var React = require('react');
 var { State } = require('react-router');
 var posts = require('../../posts');
+var NotFound = require('./NotFound');
 
 var BlogPost = React.createClass({
   mixins: [ State ],
@@ -9,7 +10,7 @@ var BlogPost = React.createClass({
     var Post = posts.forSlug(this.getParams().post);
 
     if (Post === null) {
-      return <h1>TODO: Redirect to 404</h1>
+      return <NotFound />;
     }
 
     return <Post />;
