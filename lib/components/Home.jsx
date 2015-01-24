@@ -10,7 +10,7 @@ var Home = React.createClass({
     });
 
     return (
-      <div>
+      <div className='blog-post-list'>
         {postList}
       </div>
     );
