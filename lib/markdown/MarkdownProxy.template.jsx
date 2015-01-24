@@ -11,19 +11,27 @@ var moment = require('moment');
 var component;
 
 var desc = {
+  contextTypes: {
+    assets: React.PropTypes.object
+  },
+
   loadComponent: function(callback) {
     if(!component) {
       require.ensure([], function() {
+        if (this.context && this.context.assets) {
+          this.context.assets.addScript(##NORMALIZED-MODULE-REQUEST##);
+        }
+
         component = require(##MODULE-REQUEST##);
         if(callback) callback(component);
-      });
+      }.bind(this));
     } else if(callback) callback(component);
     return component;
   }
 };
 
 var mixinReactProxy = require(##REACT-PROXY-PATH##);
-mixinReactProxy(React, desc, ##NORMALIZED-MODULE-REQUEST##);
+mixinReactProxy(React, desc);
 module.exports = React.createClass(desc);
 module.exports.Mixin = desc;
 module.exports.metadata = ##METADATA##;
