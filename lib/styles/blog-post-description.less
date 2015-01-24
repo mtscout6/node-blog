@@ -1,7 +1,18 @@
 .blog-post-description {
 
-  & + & {
-    padding-top: 30px;
+  a {
+    color: @text-color;
+    text-decoration: none;
+
+    &:hover,
+    &:focus {
+      color: @text-color;
+      text-decoration: @link-hover-decoration;
+    }
+
+    &:focus {
+      .tab-focus();
+    }
   }
 
   .blog-post-description-title {
