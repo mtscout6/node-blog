@@ -5,6 +5,10 @@ var Row = require('react-bootstrap/Row');
 var Col = require('react-bootstrap/Col');
 
 var PostEntryDescription = React.createClass({
+  propTypes: {
+    divider: React.PropTypes.bool
+  },
+
   render: function() {
     return (
       <Link to='post' params={{post: this.props.urlSlug}}>
@@ -23,7 +27,7 @@ var PostEntryDescription = React.createClass({
             <span>Sit in soluta dolorem laudantium unde nulla rem soluta id accusantium eius id excepturi. Sunt eius optio esse architecto nisi reiciendis! Sunt nulla blanditiis atque temporibus nostrum. Voluptas asperiores rerum.</span>
           </Col>
         </Row>
-        <hr />
+        { this.props.divider ? <hr /> : null }
       </Link>
     );
   }
