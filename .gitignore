@@ -1,3 +1,4 @@
 node_modules/
 public/
 lib/chunks.json
+lib/images/image-assets.json

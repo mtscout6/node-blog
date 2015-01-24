@@ -3,6 +3,7 @@ var { Link } = require('react-router');
 var Grid = require('react-bootstrap/Grid');
 var Row = require('react-bootstrap/Row');
 var Col = require('react-bootstrap/Col');
+var images = require('../images');
 
 var PostEntryDescription = React.createClass({
   propTypes: {
@@ -14,7 +15,7 @@ var PostEntryDescription = React.createClass({
       <Link to='post' params={{post: this.props.urlSlug}}>
         <Row className='blog-post-description'>
           <Col md={2} sm={3} className='text-center'>
-            <img className='blog-post-icon' src='/assets/javascript.png' alt='' />
+            <img className='blog-post-icon' src={images['./javascript.png']} alt='' />
           </Col>
           <Col md={10} sm={9}>
             <span className='h4'>

@@ -5,7 +5,6 @@ var posts = require('../../posts');
 
 var Home = React.createClass({
   render: function() {
-    console.log(posts.posts.length);
     var postList = posts.reverseOrder().map(function(p, index) {
       return <PostEntryDescription {...p.metadata} key={index} divider={index !== posts.posts.length - 1} />
     });

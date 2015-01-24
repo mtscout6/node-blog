@@ -4,8 +4,10 @@ var fs = require('fs');
 var webpack = require('webpack');
 var RequestShortener = require('webpack/lib/RequestShortener');
 var publicPath = '/assets/';
+var AssetMapPlugin = require('asset-map-webpack-plugin');
 
 module.exports = {
+  name: 'testnameforstats',
   entry: "./lib/client",
 
   output: {
@@ -34,6 +36,7 @@ module.exports = {
       },
       { test: /\.less/, loader: 'style!css!autoprefixer!less' },
       { test: /\.css/, loader: 'style!css' },
+      { test: /\.(jpe?g|png|gif|svg)$/i, loader: 'image?bypassOnDebug&optimizationLevel=7&interlaced=true&progressive=true' },
       { test: require.resolve('react'), loader: 'expose?React' }
     ]
   },
@@ -43,9 +46,10 @@ module.exports = {
   },
 
   plugins: [
-    //new webpack.optimize.UglifyJsPlugin(),
     new webpack.IgnorePlugin(/chunks\.json/),
+    new webpack.IgnorePlugin(/image-assets\.json/),
     new webpack.optimize.CommonsChunkPlugin('commons.js'),
+    new AssetMapPlugin(publicPath, path.join(__dirname, 'lib/images/image-assets.json')),
     function() {
       this.plugin('done', function(stats) {
         var requestShortener = new RequestShortener(process.cwd());
