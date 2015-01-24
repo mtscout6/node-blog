@@ -10,7 +10,7 @@
     "tdd": "mocha --harmony -w ./tests",
     "start": "node --harmony ./index.js",
     "dev": "NODE_ENV=development supervisor -e js,jsx,md -w posts,lib,node_modules --harmony node harmony -- ./index.js",
-    "devassets": "webpack -w -d --colors"
+    "devassets": "webpack -w -d --progress --colors"
   },
   "repository": {
     "type": "git",
@@ -26,7 +26,7 @@
     "npm": "2.1.x"
   },
   "dependencies": {
-    "asset-map-webpack-plugin": "0.0.2",
+    "asset-map-webpack-plugin": "0.0.3",
     "autoprefixer-loader": "^1.0.0",
     "bootstrap": "^3.3.1",
     "chai": "^1.10.0",
@@ -38,7 +38,7 @@
     "image-webpack-loader": "^1.2.0",
     "imagemin": "^3.1.0",
     "jsx-loader": "^0.12.2",
-    "koa": "^0.14.0",
+    "koa": "^0.15.0",
     "koa-etag": "^2.0.0",
     "koa-favicon": "^1.2.0",
     "koa-fresh": "0.0.3",
@@ -57,7 +57,7 @@
     "newrelic": "^1.14.7",
     "node-jsx": "^0.12.4",
     "react": "^0.12.2",
-    "react-bootstrap": "https://github.com/react-bootstrap/react-bootstrap-npm/archive/v0.13.0.tar.gz",
+    "react-bootstrap": "^0.13.3",
     "react-proxy-loader": "^0.3.2",
     "react-router": "^0.11.6",
     "react-router-bootstrap": "^0.8.0",
