@@ -1,4 +1,4 @@
 require('newrelic');
-require('node-jsx').install({extension: '.jsx', harmony: true});
+require('6to5/register');
 require('./lib/markdown/server-side').install({harmony: true});
 require('./lib/server');

@@ -1,7 +1,7 @@
 var React = require('react');
 
 var License = React.createClass({
-  render: function() {
+  render() {
     return (
     <div>
       <h3>Creative Commons Attribution-ShareAlike 4.0 International Public License</h3>

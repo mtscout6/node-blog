@@ -25,14 +25,16 @@ module.exports = {
           path.resolve('./lib/markdown/proxy-loader.js'),
           'jsx?harmony&insertPragma=React.DOM',
           path.resolve('./lib/markdown/loader.js')
-        ]
+        ],
+        exclude: /node_modules/
       },
       {
-        test: /\.jsx?$/,
+        test: /\.js$/,
         loaders: [
-          'jsx?harmony&insertPragma=React.DOM',
+          '6to5',
           path.resolve('./webpack/client-loader.js')
-        ]
+        ],
+        exclude: /node_modules/
       },
       { test: /\.less/, loader: 'style!css!autoprefixer!less' },
       { test: /\.css/, loader: 'style!css' },
@@ -42,7 +44,7 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['', '.js', '.jsx', '.md']
+    extensions: ['', '.js', '.md']
   },
 
   plugins: [
