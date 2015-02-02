@@ -1,3 +1,4 @@
+require('6to5/register');
 var _ = require('lodash');
 var path = require('path');
 var fs = require('fs');
@@ -5,6 +6,7 @@ var webpack = require('webpack');
 var RequestShortener = require('webpack/lib/RequestShortener');
 var publicPath = '/assets/';
 var AssetMapPlugin = require('asset-map-webpack-plugin');
+var ChunksMapPlugin = require('./webpack/chunks-map-plugin');
 
 module.exports = {
   name: 'testnameforstats',
@@ -23,7 +25,7 @@ module.exports = {
         test: /\.md/,
         loaders: [
           path.resolve('./lib/markdown/proxy-loader.js'),
-          'jsx?harmony&insertPragma=React.DOM',
+          '6to5',
           path.resolve('./lib/markdown/loader.js')
         ],
         exclude: /node_modules/
@@ -52,35 +54,6 @@ module.exports = {
     new webpack.IgnorePlugin(/image-assets\.json/),
     new webpack.optimize.CommonsChunkPlugin('commons.js'),
     new AssetMapPlugin(publicPath, path.join(__dirname, 'lib/images/image-assets.json')),
-    function() {
-      this.plugin('done', function(stats) {
-        var requestShortener = new RequestShortener(process.cwd());
-        var compilation = stats.compilation;
-
-        var posts = _(compilation.modules)
-          .map(function(m) {
-            return {
-              name: m.readableIdentifier(requestShortener),
-              asset: m.chunks.map(function(c) {return c.files[0];})[0]
-            }
-          })
-          .filter(function(m) {
-            return m.name.indexOf('posts') >= 0 &&
-              m.asset &&
-              m.asset.indexOf('chunk') >= 0;
-          })
-          .map(function(m) {
-            var name = m.name;
-            name = name.split('!');
-            name = name[name.length-1];
-            return [name, publicPath + m.asset]
-          })
-          .object()
-          .value();
-
-        var assetMapPath = path.join(__dirname, 'lib/chunks.json');
-        fs.writeFileSync(assetMapPath, JSON.stringify(posts), 'utf-8');
-      });
-    }
+    new ChunksMapPlugin(publicPath)
   ]
 };
