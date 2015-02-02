@@ -9,7 +9,7 @@
     "test": "mocha --harmony ./tests",
     "tdd": "mocha --harmony -w ./tests",
     "start": "node --harmony ./index.js",
-    "dev": "NODE_ENV=development supervisor -e js,md -w posts,lib,node_modules --harmony node harmony -- ./index.js",
+    "dev": "NODE_ENV=development supervisor -e js,md,json -w posts,lib,node_modules --harmony node harmony -- ./index.js",
     "devassets": "webpack -w -d --progress --colors"
   },
   "repository": {
