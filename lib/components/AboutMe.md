@@ -37,4 +37,3 @@ United States Marine Corps
 --------------------------
 <LocalImage className="about-me-egapic" src="ega.jpg" />
 A biography of my life would be incomplete without stating that I am a US Marine. I spent my entire enlistment with Fox Company 2nd Battalion 23rd Marines as a rifleman in an Infantry unit. I deployed to the Al Anbar Province of Iraq in support of Operation Iraqi Freedom in 2009.
-

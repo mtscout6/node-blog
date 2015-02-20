@@ -1,16 +1,14 @@
-require('6to5/register');
-var _ = require('lodash');
+require('babel/register');
+
 var path = require('path');
-var fs = require('fs');
 var webpack = require('webpack');
-var RequestShortener = require('webpack/lib/RequestShortener');
 var publicPath = '/assets/';
 var AssetMapPlugin = require('asset-map-webpack-plugin');
 var ChunksMapPlugin = require('./webpack/chunks-map-plugin');
 
 module.exports = {
   name: 'testnameforstats',
-  entry: "./lib/client",
+  entry: './lib/client',
 
   output: {
     filename: '[name].js',
@@ -25,7 +23,7 @@ module.exports = {
         test: /\.md/,
         loaders: [
           path.resolve('./lib/markdown/proxy-loader.js'),
-          '6to5',
+          'babel',
           path.resolve('./lib/markdown/loader.js')
         ],
         exclude: /node_modules/
@@ -33,7 +31,7 @@ module.exports = {
       {
         test: /\.js$/,
         loaders: [
-          '6to5',
+          'babel',
           path.resolve('./webpack/client-loader.js')
         ],
         exclude: /node_modules/
