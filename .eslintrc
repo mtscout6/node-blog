@@ -1,0 +1,13 @@
+{
+  "parser": "esprima",
+  "ecmaFeatures": {
+    "jsx": true
+  },
+  "rules": {
+    "quotes": [1, "single", "avoid-escape"]
+  },
+  "env": {
+    "browser": true,
+    "node": true
+  }
+}
