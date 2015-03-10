@@ -1,7 +1,7 @@
-var fs= require('fs');
-var path = require('path');
+import fs from 'fs';
+import path from 'path';
 
-module.exports = function(source) {
+export default function(source) {
   var extension = path.extname(this.resourcePath);
   var basename = path.basename(this.resourcePath, extension);
   var dirname = path.dirname(this.resourcePath);

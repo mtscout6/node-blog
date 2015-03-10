@@ -1,9 +1,9 @@
-var _ = require('lodash');
-var fs = require('fs');
-var path = require('path');
-var RequestShortener = require('webpack/lib/RequestShortener');
+import _ from 'lodash';
+import fs from 'fs';
+import path from 'path';
+import RequestShortener from 'webpack/lib/RequestShortener';
 
-class ChunksMapPlugin {
+export default class ChunksMapPlugin {
   constructor(publicPath) {
     this.publicPath = publicPath;
   }
@@ -36,5 +36,3 @@ class ChunksMapPlugin {
     });
   }
 }
-
-module.exports = ChunksMapPlugin;

@@ -1,29 +1,25 @@
-var _ = require('lodash');
-var moment = require('moment');
+import _ from 'lodash';
+import moment from 'moment';
 
-function Posts(posts) {
-  this.posts = posts || [];
-};
-
-Posts.prototype.reverseOrder = function() {
-  return _(this.posts)
-    .sortBy(this.posts, function(p) {
-      return p.metadata.date;
-    })
-    .reverse()
-    .value();
-};
-
-Posts.prototype.forSlug = function(urlSlug) {
-  var index = _.findIndex(this.posts, function(p) {
-    return p.metadata.urlSlug === urlSlug;
-  });
-
-  if (index < 0) {
-    return null;
+export default class Posts {
+  constructor(posts) {
+    this.posts = posts || [];
   }
 
-  return this.posts[index];
-};
+  reverseOrder() {
+    return _(this.posts)
+      .sortBy(this.posts, p => p.metadata.date)
+      .reverse()
+      .value();
+  }
 
-module.exports = Posts;
+  forSlug(urlSlug) {
+    let index = _.findIndex(this.posts, p => p.metadata.urlSlug === urlSlug);
+
+    if (index < 0) {
+      return null;
+    }
+
+    return this.posts[index];
+  }
+}

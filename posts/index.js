@@ -1,8 +1,10 @@
-var walk = require('../lib/walk-dir');
-var files = walk(__dirname, /\.md$/);
+import walk from '../lib/walk-dir';
+import Posts from './posts';
 
-var Posts = require('./posts');
+let files = walk(__dirname, /\.md$/);
 
-module.exports = new Posts(files.map(function(f) {
+let PostsContext = new Posts(files.map(function(f) {
   return require(f);
 }));
+
+export default PostsContext;

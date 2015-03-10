@@ -1,4 +1,4 @@
-var substitutions = require('../../lib/markdown/markdown-replacements');
+import substitutions from '../../lib/markdown/markdown-replacements';
 
 describe('markdown replacements', function() {
   it('replaces { with html code', function() {
